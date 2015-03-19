@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+#  Notes
+#   - This script has been tested to work with RHEL & CentOS
+#   - This script must be run as root
+#   - This script can be installed in /etc/init.d
+#
+#  Author
+#  Marc S. Brooks <devel@mbrooks.info>
+#
+#  chkconfig: 345 95 95
+#  description: drupal+ init script
+#
+
+BASE_DIR=/usr/local/drupal+
+LOCKFILE=/var/lock/subsys/drupal+
+
+if [ ! -d $BASE_DIR ]; then
+    exit 1
+fi
+
+start() {
+    $BASE_DIR/init.d/php-fpm   start
+    $BASE_DIR/init.d/memcached start
+    $BASE_DIR/init.d/nginx     start
+
+    if [ $? -eq 0 ]; then
+        touch $LOCKFILE
+    fi
+}
+
+stop() {
+    $BASE_DIR/init.d/nginx     stop
+    $BASE_DIR/init.d/memcached stop
+    $BASE_DIR/init.d/php-fpm   stop
+
+    if [ $? -eq 0 ]; then
+        rm -f $LOCKFILE
+    fi
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+
+    echo $"Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0

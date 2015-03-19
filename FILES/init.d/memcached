@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+#  Notes
+#   - This script has been tested to work with RHEL & CentOS
+#   - This script must be run as root
+#
+#  Author
+#  Marc S. Brooks <devel@mbrooks.info>
+#
+
+BASE_DIR=/usr/local/drupal+
+LOCKFILE=/var/lock/subsys/drupal+memcached
+
+. /etc/init.d/functions
+
+if [ ! -d $BASE_DIR ]; then
+    exit 1
+fi
+
+. /usr/local/drupal+/conf/memcached.conf
+
+OPTIONS="-d -l 127.0.0.1:11211 -u memcached -c $max_connect -m $max_memory"
+
+start() {
+    action $"Starting memcached daemon:" daemon $BASE_DIR/bin/memcached $OPTIONS
+
+    if [ $? -eq 0 ]; then
+        touch $LOCKFILE
+    fi
+}
+
+stop() {
+    action $"Stopping memcached daemon:" killproc memcached
+
+    if [ $? -eq 0 ]; then
+        rm -f $LOCKFILE
+    fi
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+
+    echo $"Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0
