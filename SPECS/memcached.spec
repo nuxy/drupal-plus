@@ -1,6 +1,6 @@
 %define name    drupal+memcached
 %define version 1.4.22
-%define release 2
+%define release 1
 
 Summary:       High Performance, Distributed Memory Object Cache
 Name:          %{name}
@@ -8,7 +8,7 @@ Packager:      Marc S. Brooks <devel@mbrooks.info>
 Version:       %{version}
 Release:       %{release}
 License:       BSD
-URL:           https://github.com/nuxy/drupal-plus
+URL:           https://github.com/nuxy/drupal8-plus
 Group:         System Environment/Daemons
 Source:        memcached-%{version}.tar.gz
 
@@ -54,5 +54,5 @@ if [ "$1" -ge 1 ]; then
 fi
 
 %changelog
-* Wed Mar 18 2015  Marc S. Brooks <devel@mbrooks.info> beta1
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 1
 - Initial release based on drupal7-plus sources.

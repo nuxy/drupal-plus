@@ -1,6 +1,6 @@
 %define name    drupal+php5
 %define version 5.5.22
-%define release 2
+%define release 1
 
 Summary:       PHP: Hypertext Preprocessor
 Name:          %{name}
@@ -8,7 +8,7 @@ Packager:      Marc S. Brooks <devel@mbrooks.info>
 Version:       %{version}
 Release:       %{release}
 License:       The PHP license (see "LICENSE" file included in distribution)
-URL:           https://github.com/nuxy/drupal-plus
+URL:           https://github.com/nuxy/drupal8-plus
 Group:         Development/Languages
 Source:        php-%{version}.tar.gz
 
@@ -68,5 +68,5 @@ if [ "$1" -ge 1 ]; then
 fi
 
 %changelog
-* Wed Mar 18 2015  Marc S. Brooks <devel@mbrooks.info> beta1
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 1
 - Initial release based on drupal7-plus sources.

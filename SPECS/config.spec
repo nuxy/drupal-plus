@@ -1,6 +1,6 @@
 %define name    drupal+config
 %define version 0.01
-%define release 4
+%define release 1
 
 Summary:   drupal+ configuration files
 Name:      %{name}
@@ -8,7 +8,7 @@ Packager:  Marc S. Brooks <devel@mbrooks.info>
 Version:   %{version}
 Release:   %{release}
 License:   MIT
-URL:       https://github.com/nuxy/drupal-plus
+URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
 
 Requires(pre): drupal, drupal+php5, drupal+memcached, drupal+nginx
@@ -70,5 +70,5 @@ fi
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
-* Wed Mar 18 2015  Marc S. Brooks <devel@mbrooks.info> beta1
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 1
 - Initial release based on drupal7-plus sources.

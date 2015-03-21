@@ -8,7 +8,7 @@ Packager:  Marc S. Brooks <devel@mbrooks.info>
 Version:   %{version}
 Release:   %{release}
 License:   GPL
-URL:       https://github.com/nuxy/drupal-plus
+URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
 Source:    drupal-%{version}-%{release}.tar.gz
 
@@ -49,5 +49,4 @@ drupal+ php-bin sources have been backed up to:
 EOF
 
 %changelog
-* Wed Mar 18 2015  Marc S. Brooks <devel@mbrooks.info> beta1
-- Initial release based on drupal7-plus sources.
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> beta1
