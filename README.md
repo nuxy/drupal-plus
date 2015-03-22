@@ -27,15 +27,15 @@ In order to avoid conflicts with existing server packages the RPM build installs
 The directory structure is as follows:
 
     /usr/local/drupal+
-    /usr/local/drupal+/bin                   PHP5, composer, nginx, drush, memcached binaries
-    /usr/local/drupal+/conf                  PHP, PHP FPM, Memcached, nginx configurations
-    /usr/local/drupal+/html                  static content including error pages
-    /usr/local/drupal+/init.d                package init scripts
+    /usr/local/drupal+/bin                 PHP5, composer, nginx, drush, memcached binaries
+    /usr/local/drupal+/conf                PHP, PHP FPM, Memcached, nginx configurations
+    /usr/local/drupal+/html                static content including error pages
+    /usr/local/drupal+/init.d              package init scripts
     /usr/local/drupal+/include
     /usr/local/drupal+/lib
-    /usr/local/drupal+/logs                  HTTP request logs (enable in nginx.conf)
+    /usr/local/drupal+/logs                HTTP request logs (enable in nginx.conf)
     /usr/local/drupal+/man
-    /usr/local/drupal+/php-bin               Drupal 8 installation
+    /usr/local/drupal+/php-bin             Drupal 8 installation
     /usr/local/drupal+/share
 
 ## RPM Releases
