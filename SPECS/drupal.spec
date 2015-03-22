@@ -50,3 +50,4 @@ EOF
 
 %changelog
 * Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> beta1
+- Updated package URL to current Github repository endpoint
