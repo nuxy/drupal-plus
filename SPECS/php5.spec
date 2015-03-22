@@ -1,6 +1,6 @@
 %define name    drupal+php5
 %define version 5.5.22
-%define release 1
+%define release 2
 
 Summary:       PHP: Hypertext Preprocessor
 Name:          %{name}
@@ -34,7 +34,7 @@ developers to write dynamically generated pages quickly.
 cd $RPM_BUILD_ROOT/%{_bindir}
 %{__ln_s} phar.phar phar
 
-curl -sS -o $RPM_BUILD_ROOT/%{_bindir} https://getcomposer.org/installer | $RPM_BUILD_ROOT/%{_bindir}/php
+curl -sS https://getcomposer.org/installer | $RPM_BUILD_ROOT%{_bindir}/php
 %{__ln_s} composer.phar composer
 
 %files
@@ -72,6 +72,9 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
-* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 2
+* Sun Mar 22 2015 Marc S. Brooks <devel@mbrooks.info> r2
+- Removed -o argument since this fails on x86_64
+
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Initial release based on drupal7-plus sources.
 - Added support for Composer package management tool.
