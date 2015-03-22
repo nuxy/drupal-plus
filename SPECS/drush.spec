@@ -12,7 +12,7 @@ URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
 Source:    drush-%{version}-%{release}.tar.gz
 
-Requires(pre): drupal+config drupal+php5
+Requires(pre): drupal+config, drupal+php5
 AutoReq:       0
 
 %description
@@ -35,9 +35,9 @@ working hours hacking away at the command prompt.
 %post
 if [ $1 == 1 ]; then
     %{__ln_s} %{_prefix}/drush/drush %{_bindir}/drush
+
     cd %{_prefix}/drush
-    %{_bindir}/composer install
-    %{_bindir}/drush --version
+    %{_bindir}/php %{_bindir}/composer install
 fi
 
 %{__cat} <<EOF
@@ -54,5 +54,9 @@ EOF
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sun Mar 22 2015 Marc S. Brooks <devel@mbrooks.info> alpha9
+- Added missing comma to dependency list
+- Added full path to PHP binary in composer install
+
 * Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> alpha9
 - Initial release based on drupal7-plus sources.
