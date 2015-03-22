@@ -45,12 +45,13 @@ web applications by alleviating database load.
 
 %preun
 if [ $1 = 0 ]; then
+  %{_prefix}/init.d/memcached stop > /dev/null 2>&1
   /usr/sbin/userdel memcached
 fi
 
 %postun
-if [ "$1" -ge 1 ]; then
-   /sbin/service memcached restart > /dev/null 2>&1
+if [ $1 -ge 1 ]; then
+   %{_prefix}/init.d/memcached restart > /dev/null 2>&1
 fi
 
 %changelog

@@ -55,12 +55,13 @@ nginx [engine x] is an HTTP and reverse proxy server, as well as a mail proxy se
 
 %preun
 if [ $1 = 0 ]; then
+  %{_prefix}/init.d/nginx stop > /dev/null 2>&1
   /usr/sbin/userdel nginx
 fi
 
 %postun
-if [ "$1" -ge 1 ]; then
-   /sbin/service nginx restart > /dev/null 2>&1
+if [ $1 -ge 1 ]; then
+    %{_prefix}/init.d/nginx restart > /dev/null 2>&1
 fi
 
 %changelog
