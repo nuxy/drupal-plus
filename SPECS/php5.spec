@@ -25,7 +25,7 @@ developers to write dynamically generated pages quickly.
 %setup -n php-%{version}
 
 %build
-%{configure} --prefix=%{_prefix} --bindir=%{_bindir} --sysconfdir=%{_sysconfdir} --with-pdo-mysql --with-gd --with-jpeg-dir=%{_libdir} --enable-mbstring --enable-fpm
+%{configure} --prefix=%{_prefix} --bindir=%{_bindir} --sysconfdir=%{_sysconfdir} --with-openssl --with-pdo-mysql --with-gd --with-jpeg-dir=%{_libdir} --enable-mbstring --enable-fpm
 
 %install
 %{__make} INSTALL_ROOT=$RPM_BUILD_ROOT install
@@ -33,6 +33,9 @@ developers to write dynamically generated pages quickly.
 %{__rm} -f $RPM_BUILD_ROOT/%{_bindir}/phar
 cd $RPM_BUILD_ROOT/%{_bindir}
 %{__ln_s} phar.phar phar
+
+curl -sS -o $RPM_BUILD_ROOT/%{_bindir} https://getcomposer.org/installer | $RPM_BUILD_ROOT/%{_bindir}/php
+%{__ln_s} composer.phar composer
 
 %files
 %defattr(-,root,root)
@@ -59,14 +62,16 @@ cd $RPM_BUILD_ROOT/%{_bindir}
 
 %preun
 if [ $1 = 0 ]; then
+  %{_prefix}/init.d/php-fpm stop > /dev/null 2>&1
   /usr/sbin/userdel php-fpm
 fi
 
 %postun
-if [ "$1" -ge 1 ]; then
-   /sbin/service php-fpm restart > /dev/null 2>&1
+if [ $1 -ge 1 ]; then
+   %{_prefix}/init.d/php-fpm restart > /dev/null 2>&1
 fi
 
 %changelog
-* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 1
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 2
 - Initial release based on drupal7-plus sources.
+- Added support for Composer package management tool.
