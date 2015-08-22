@@ -1,6 +1,6 @@
 %define name    drupal
 %define version 8.0.0
-%define release beta1
+%define release beta14
 
 Summary:   Open Source CMS
 Name:      %{name}
@@ -49,5 +49,8 @@ drupal+ php-bin sources have been backed up to:
 EOF
 
 %changelog
+* Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> beta14
+- Latest Drupal development release.
+
 * Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> beta1
 - Updated package URL to current Github repository endpoint
