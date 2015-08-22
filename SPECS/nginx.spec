@@ -1,5 +1,5 @@
 %define name    drupal+nginx
-%define version 1.6.2
+%define version 1.8.0
 %define release 1
 
 Summary:       Robust, small and high performance http and reverse proxy
@@ -65,5 +65,8 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
-* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 1
+* Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> r1
+- Update to latest stable release
+
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Initial release based on drupal7-plus sources.

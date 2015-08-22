@@ -1,6 +1,6 @@
 %define name    drupal+php5
-%define version 5.5.22
-%define release 2
+%define version 5.5.28
+%define release 1
 
 Summary:       PHP: Hypertext Preprocessor
 Name:          %{name}
@@ -72,6 +72,9 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> r1
+- Update to latest stable release
+
 * Sun Mar 22 2015 Marc S. Brooks <devel@mbrooks.info> r2
 - Removed -o argument since this fails on x86_64
 
