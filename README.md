@@ -4,16 +4,16 @@
 
 ## Project
 
-The overall goal of this project is to create a standard RPM bundle for installing/configuring Drupal 8 and related server dependencies.  Please note that Drupal 8 is in BETA, so expect [issues](https://www.drupal.org/project/issues/drupal?status=Open&priorities=All&categories=All&version=8.0.0-beta1&component=All) and don't report them to me either.
+The overall goal of this project is to create a standard RPM bundle for installing/configuring Drupal 8 and related server dependencies.  Please note that Drupal 8 is in BETA, so expect [issues](https://www.drupal.org/project/issues/drupal?status=Open&priorities=All&categories=All&version=8.0.0-beta14&component=All) and don't report them to me either.
 
 ## Provides
 
 The following packages are installed and pre-configured in /usr/local/drupal+
 
-*   [PHP](http://php.net) 5.5.22 / [php-fpm (Fast Process Manager)](http://php-fpm.org) / [pdo_mysql](http://www.php.net/manual/en/ref.pdo-mysql.php) / [Composer](https://getcomposer.org)
-*   [nginx](http://nginx.org) 1.6.2
-*   [memcached](http://memcached.org) 1.4.22
-*   [Drupal](http://drupal.org) 8.0.0-beta1
+*   [PHP](http://php.net) 5.5.28 / [php-fpm (Fast Process Manager)](http://php-fpm.org) / [pdo_mysql](http://www.php.net/manual/en/ref.pdo-mysql.php) / [Composer](https://getcomposer.org)
+*   [nginx](http://nginx.org) 1.8.0
+*   [memcached](http://memcached.org) 1.4.24
+*   [Drupal](http://drupal.org) 8.0.0-beta14
 *   [Drush](https://github.com/drush-ops/drush) 7.0.0-alpha9
 
 ## Supported Systems
