@@ -1,6 +1,6 @@
 %define name    drupal+config
 %define version 0.01
-%define release 1
+%define release 2
 
 Summary:   drupal+ configuration files
 Name:      %{name}
@@ -70,5 +70,8 @@ fi
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
-* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> 1
+* Sun Sep  6 2015  Marc S. Brooks <devel@mbrooks.info> r2
+- Various updates and additions to nginx.conf
+
+* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Initial release based on drupal7-plus sources.
