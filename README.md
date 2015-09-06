@@ -1,6 +1,6 @@
 <img src="https://github.com/nuxy/drupal8-plus/raw/master/preview.jpg" alt="drupal-plus" />
 
-(**Updated** **8/22/2015**)
+(**Updated** **9/6/2015**)
 
 ## Project
 
@@ -18,7 +18,7 @@ The following packages are installed and pre-configured in /usr/local/drupal+
 
 ## Supported Systems
 
-The RPMs provided with this bundle have been tested to work on both [32bit](https://labs.mbrooks.info/files/drupal8-plus/i386) and [64bit](https://labs.mbrooks.info/files/drupal8-plus/x86_64) servers running RHEL and CentOS 5+
+The RPMs provided with this bundle have been tested to work on both [32bit](https://mbrooks.info/files/rpm/drupal8-plus/i386) and [64bit](https://mbrooks.info/files/rpm/drupal8-plus/x86_64) servers running RHEL and CentOS 5+
 
 ## Directory Structure
 
@@ -40,7 +40,7 @@ The directory structure is as follows:
 
 ## RPM Releases
 
-For the lazy, I have provided pre-compiled [RPM](https://labs.mbrooks.info/files/drupal8-plus)s for i386 and x86_64 architectures.  I will be updating these packages when either a dependency releases a new stable build, or in the event of a critical security fix.
+For the lazy, I have provided pre-compiled [RPM](https://mbrooks.info/files/rpm/drupal8-plus)s for i386 and x86_64 architectures.  I will be updating these packages when either a dependency releases a new stable build, or in the event of a critical security fix.
 
 ## Get up and running in seconds
 
@@ -91,7 +91,7 @@ If you plan on doing PHP development or just need to run drush locally. It is im
 
 Due to space limitations, general bloatness, and other convincing reasons, *drupal+* dependencies will no longer stored in the Github repository. They will, however, be available and distributed as .src.rpm and can be accessed as such.
 
-Download the RPMs and related sources [here](https://labs.mbrooks.info/files/drupal8-plus).
+Download the RPMs and related sources [here](https://mbrooks.info/files/rpm/drupal8-plus).
 
 ## License and Warranty
 
