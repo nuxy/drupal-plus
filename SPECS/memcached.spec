@@ -1,5 +1,5 @@
 %define name    drupal+memcached
-%define version 1.4.24
+%define version 1.4.25
 %define release 1
 
 Summary:       High Performance, Distributed Memory Object Cache
@@ -55,6 +55,9 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r1
+- Update to latest stable release
+
 * Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Update to latest stable release
 
