@@ -1,6 +1,6 @@
 %define name    drupal
-%define version 8.0.0
-%define release beta14
+%define version 8.0.1
+%define release 1
 
 Summary:   Open Source CMS
 Name:      %{name}
@@ -10,7 +10,7 @@ Release:   %{release}
 License:   GPL
 URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
-Source:    drupal-%{version}-%{release}.tar.gz
+Source:    drupal-%{version}.tar.gz
 
 Requires(pre): drupal+config, drupal+php5, drupal+nginx
 AutoReq:       0
@@ -21,7 +21,7 @@ and applications. It's built, used, and supported by an active and diverse
 community of people around the world.
 
 %prep
-%setup -n drupal-%{version}-%{release}
+%setup -n drupal-%{version}
 
 %install
 %{__mkdir} -p $RPM_BUILD_ROOT%{_prefix}/php-bin
@@ -49,6 +49,9 @@ drupal+ php-bin sources have been backed up to:
 EOF
 
 %changelog
+* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> 1
+- Drupal 8 production release is here.
+
 * Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> beta14
 - Latest Drupal development release.
 
