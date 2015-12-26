@@ -1,6 +1,6 @@
 %define name    drupal+drush
-%define version 7.0.0
-%define release alpha9
+%define version 8.0.1
+%define release 1
 
 Summary:   Open Source CMS
 Name:      %{name}
@@ -10,7 +10,7 @@ Release:   %{release}
 License:   GPL
 URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
-Source:    drush-%{version}-%{release}.tar.gz
+Source:    drush-%{version}.tar.gz
 
 Requires(pre): drupal+config, drupal+php5
 AutoReq:       0
@@ -21,13 +21,13 @@ Swiss Army knife designed to make life easier for those who spend their
 working hours hacking away at the command prompt.
 
 %prep
-%setup -n drush-%{version}-%{release}
+%setup -n drush-%{version}
 
 %build
 %{__mkdir} -p $RPM_BUILD_ROOT%{_prefix}
 
 %install
-%{__cp} -ar %{_topdir}/BUILD/drush-%{version}-%{release} $RPM_BUILD_ROOT%{_prefix}/drush
+%{__cp} -ar %{_topdir}/BUILD/drush-%{version} $RPM_BUILD_ROOT%{_prefix}/drush
 
 %files
 %{_prefix}/drush
@@ -54,6 +54,9 @@ EOF
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sun Dec 26 2015 Marc S. Brooks <devel@mbrooks.info> 1
+- Updated package to latest stable release
+
 * Sun Mar 22 2015 Marc S. Brooks <devel@mbrooks.info> alpha9
 - Added missing comma to dependency list
 - Added full path to PHP binary in composer install

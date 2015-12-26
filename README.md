@@ -1,6 +1,6 @@
 <img src="https://github.com/nuxy/drupal8-plus/raw/master/preview.jpg" alt="drupal-plus" />
 
-(**Updated** **12/25/2015**)
+(**Updated** **12/26/2015**)
 
 ## Project
 
@@ -12,9 +12,9 @@ The following packages are installed and pre-configured in /usr/local/drupal+
 
 *   [PHP](http://php.net) 7.0.1 / [php-fpm (Fast Process Manager)](http://php-fpm.org) / [pdo_mysql](http://www.php.net/manual/en/ref.pdo-mysql.php) / [Composer](https://getcomposer.org)
 *   [nginx](http://nginx.org) 1.8.0
-*   [memcached](http://memcached.org) 1.4.24
+*   [memcached](http://memcached.org) 1.4.25
 *   [Drupal](http://drupal.org) 8.0.1
-*   [Drush](https://github.com/drush-ops/drush) 7.0.0-alpha9
+*   [Drush](https://github.com/drush-ops/drush) 8.0.1
 
 ## Supported Systems
 
