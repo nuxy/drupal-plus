@@ -72,6 +72,9 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r1
+- Updating package to PHP7 (stable)
+
 * Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Update to latest stable release
 
