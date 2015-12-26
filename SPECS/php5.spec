@@ -1,6 +1,6 @@
 %define name    drupal+php5
-%define version 5.5.28
-%define release 1
+%define version 7.0.1
+%define release 2
 
 Summary:       PHP: Hypertext Preprocessor
 Name:          %{name}
@@ -35,7 +35,6 @@ cd $RPM_BUILD_ROOT/%{_bindir}
 %{__ln_s} phar.phar phar
 
 curl -sS https://getcomposer.org/installer | $RPM_BUILD_ROOT%{_bindir}/php
-%{__ln_s} composer.phar composer
 
 %files
 %defattr(-,root,root)
@@ -50,6 +49,7 @@ curl -sS https://getcomposer.org/installer | $RPM_BUILD_ROOT%{_bindir}/php
 %config(noreplace) %{_sysconfdir}/pear.conf
 
 %exclude %{_prefix}/conf/php-fpm.conf.default
+%exclude %{_prefix}/conf/php-fpm.d/www.conf.default
 %exclude /.channels
 %exclude /.depdb
 %exclude /.depdblock
@@ -72,8 +72,10 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
-* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r1
+* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r2
 - Updating package to PHP7 (stable)
+- Removed composer %{_ls} since it's now part of the install process.
+- Added php-www.conf %exclude to %files
 
 * Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Update to latest stable release
