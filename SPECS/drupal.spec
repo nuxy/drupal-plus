@@ -34,23 +34,40 @@ community of people around the world.
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %post
-%{__chown} -R php-fpm:php-fpm %{_prefix}/php-bin/sites
+
+# On install, update sites/files directory permissions.
+if [ $1 -eq 0 ]; then
+  %{__chown} -R php-fpm:php-fpm %{_prefix}/php-bin/sites/files
+fi
+
+# On upgrade, replace sites directory with backup.
+if [ $1 -gt 1 ] && [ -d %{_tmppath}/sites ]; then
+  %{__mv} %{_tmppath}/sites %{_prefix}/php-bin/sites
+fi
 
 %preun
-BACKUP=drupal-$(date +%s).tar.gz
 
-%{__tar} cfz %{_prefix}/$BACKUP %{_prefix}/php-bin > /dev/null 2>&1
+# Backup Drupal sources prior to uninstall process.
+if [ $1 -eq 0 ]; then
+  BACKUP=drupal-$(date +%s).tar.gz
 
-%{__cat} <<EOF
+  %{__tar} cfz %{_prefix}/$BACKUP %{_prefix}/php-bin > /dev/null 2>&1
 
+  %{__cat} <<EOF
 drupal+ php-bin sources have been backed up to:
    %{_prefix}/$BACKUP
-
 EOF
+fi
+
+# On upgrade, preserve the sites directory.
+if [ $1 -gt 1 ] && [ -d %{_prefix}/php-bin/sites ]; then
+  %{__mv} %{_prefix}/php-bin/sites %{_tmppath}/sites
+fi
 
 %changelog
-* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> 1
+* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> 2
 - Drupal 8 production release is here.
+- Update %preun/post to handle install and upgrade states.
 
 * Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> beta14
 - Latest Drupal development release.
