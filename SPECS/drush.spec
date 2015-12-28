@@ -12,7 +12,7 @@ URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
 Source:    drush-%{version}.tar.gz
 
-Requires(pre): drupal+config, drupal+php5
+Requires(pre): drupal+config, drupal+php7
 AutoReq:       0
 
 %description
@@ -63,6 +63,7 @@ EOF
 - Added %preun to remove Composer install artifacts.
 - Updated operator in conditional check.
 - Added --quiet to disable Composer STDOUT
+- Updated php5 dependency package name (now php7)
 
 * Sun Dec 26 2015 Marc S. Brooks <devel@mbrooks.info> 1
 - Updated package to latest stable release

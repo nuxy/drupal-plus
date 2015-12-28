@@ -1,4 +1,4 @@
-%define name    drupal+php5
+%define name    drupal+php7
 %define version 7.0.1
 %define release 3
 
@@ -83,6 +83,7 @@ fi
 * Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r3
 - Fixed bugs in the Composer installation process.
 - Enabled support for PHP OPcode caching.
+- Updated php5 dependency package name (now php7)
 
 * Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r2
 - Updating package to PHP7 (stable)

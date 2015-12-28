@@ -12,7 +12,7 @@ URL:       https://github.com/nuxy/drupal8-plus
 Group:     Application/Web
 Source:    drupal-%{version}.tar.gz
 
-Requires(pre): drupal+config, drupal+php5, drupal+nginx
+Requires(pre): drupal+config, drupal+php7, drupal+nginx
 AutoReq:       0
 
 %description
@@ -78,6 +78,7 @@ fi
 * Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r2
 - Fixed incorrect value of $1 in state check.
 - Added conditional checks to %post and %preun build states.
+- Updated php5 dependency package name (now php7)
 
 * Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Drupal 8 production release is here.
