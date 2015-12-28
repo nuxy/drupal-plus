@@ -1,6 +1,6 @@
 %define name    drupal
 %define version 8.0.1
-%define release 1
+%define release 2
 
 Summary:   Open Source CMS
 Name:      %{name}
@@ -35,42 +35,50 @@ community of people around the world.
 
 %post
 
-# On install, update sites/files directory permissions.
+# REMOVE:
 if [ $1 -eq 0 ]; then
-  %{__chown} -R php-fpm:php-fpm %{_prefix}/php-bin/sites/files
+    %{__rm} -rf %{_prefix}/php-bin
 fi
 
-# On upgrade, replace sites directory with backup.
+# INSTALL: Create sites/files directory if doesn't exist.
+if [ $1 -eq 1 ] && [ ! -e %{_prefix}/php-bin/sites/default/files ]; then
+    %{__mkdir} -p %{_prefix}/php-bin/sites/default/files
+    %{__chown} -R php-fpm:php-fpm %{_prefix}/php-bin/sites/default/files
+
+    %{__cp} %{_prefix}/php-bin/sites/default/default.settings.php %{_prefix}/php-bin/sites/default/settings.php
+    %{__chmod} 666 %{_prefix}/php-bin/sites/default/settings.php
+fi
+
+# UPGRADE: Replace sites directory with preserved files.
 if [ $1 -gt 1 ] && [ -d %{_tmppath}/sites ]; then
-  %{__mv} %{_tmppath}/sites %{_prefix}/php-bin/sites
+    %{__mv} %{_tmppath}/sites %{_prefix}/php-bin/sites
 fi
 
 %preun
 
-# Backup Drupal sources prior to uninstall process.
+# REMOVE: Backup Drupal sources prior to uninstall process.
 if [ $1 -eq 0 ]; then
-  BACKUP=drupal-$(date +%s).tar.gz
+    BACKUP=drupal-$(date +%s).tar.gz
 
-  %{__tar} cfz %{_prefix}/$BACKUP %{_prefix}/php-bin > /dev/null 2>&1
+    %{__tar} cfz %{_prefix}/$BACKUP %{_prefix}/php-bin > /dev/null 2>&1
 
-  %{__cat} <<EOF
+    %{__cat} <<EOF
 drupal+ php-bin sources have been backed up to:
-   %{_prefix}/$BACKUP
+  %{_prefix}/$BACKUP
+
 EOF
 fi
 
-# On upgrade, preserve the sites directory.
+# UPGRADE: Preserve the current sites directory.
 if [ $1 -gt 1 ] && [ -d %{_prefix}/php-bin/sites ]; then
-  %{__mv} %{_prefix}/php-bin/sites %{_tmppath}/sites
+    %{__mv} %{_prefix}/php-bin/sites %{_tmppath}/sites
 fi
 
 %changelog
-* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> 2
+* Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r2
+- Fixed incorrect value of $1 in state check.
+- Added conditional checks to %post and %preun build states.
+
+* Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Drupal 8 production release is here.
 - Update %preun/post to handle install and upgrade states.
-
-* Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> beta14
-- Latest Drupal development release.
-
-* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> beta1
-- Updated package URL to current Github repository endpoint
