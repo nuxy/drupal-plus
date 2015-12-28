@@ -1,6 +1,6 @@
 %define name    drupal+drush
 %define version 8.0.1
-%define release 1
+%define release 2
 
 Summary:   Open Source CMS
 Name:      %{name}
@@ -33,27 +33,37 @@ working hours hacking away at the command prompt.
 %{_prefix}/drush
 
 %post
-if [ $1 == 1 ]; then
+
+# INSTALL: Install the Drush binary using Composer.
+if [ $1 -eq 1 ]; then
     %{__ln_s} %{_prefix}/drush/drush %{_bindir}/drush
 
     cd %{_prefix}/drush
-    %{_bindir}/php %{_bindir}/composer install
+    %{_bindir}/php %{_bindir}/composer install -q
 fi
 
 %{__cat} <<EOF
-
 drush has been installed in:
-   /usr/local/drupal+/bin
+  /usr/local/drupal+/bin
 
 To use drush you must add drupal+ to your session PATH
   $ export PATH=\$PATH:/usr/local/drupal+/bin
 
 EOF
 
+%preun
+%{__rm} -rf %{_prefix}/bin/drush
+%{__rm} -rf %{_prefix}/drush/vendor
+
 %clean
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
+* Mon Dec 28 2015 Marc S. Brooks <devel@mbrooks.info> 2
+- Added %preun to remove Composer install artifacts.
+- Updated operator in conditional check.
+- Added --quiet to disable Composer STDOUT
+
 * Sun Dec 26 2015 Marc S. Brooks <devel@mbrooks.info> 1
 - Updated package to latest stable release
 
