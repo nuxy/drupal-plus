@@ -1,6 +1,6 @@
 %define name    drupal+php5
 %define version 7.0.1
-%define release 2
+%define release 3
 
 Summary:       PHP: Hypertext Preprocessor
 Name:          %{name}
@@ -25,7 +25,7 @@ developers to write dynamically generated pages quickly.
 %setup -n php-%{version}
 
 %build
-%{configure} --prefix=%{_prefix} --bindir=%{_bindir} --sysconfdir=%{_sysconfdir} --with-openssl --with-pdo-mysql --with-gd --with-jpeg-dir=%{_libdir} --enable-mbstring --enable-fpm
+%{configure} --prefix=%{_prefix} --bindir=%{_bindir} --sysconfdir=%{_sysconfdir} --with-openssl --with-pdo-mysql --with-gd --with-jpeg-dir=%{_libdir} --enable-mbstring --enable-fpm --enable-opcache
 
 %install
 %{__make} INSTALL_ROOT=$RPM_BUILD_ROOT install
@@ -35,6 +35,10 @@ cd $RPM_BUILD_ROOT/%{_bindir}
 %{__ln_s} phar.phar phar
 
 curl -sS https://getcomposer.org/installer | $RPM_BUILD_ROOT%{_bindir}/php
+
+if [ ! -e $RPM_BUILD_ROOT%{_bindir}/composer ]; then
+  %{__ln_s} composer.phar composer
+fi
 
 %files
 %defattr(-,root,root)
@@ -61,17 +65,25 @@ curl -sS https://getcomposer.org/installer | $RPM_BUILD_ROOT%{_bindir}/php
 /usr/sbin/useradd -c 'php-fpm user' -s /sbin/nologin -r -d %{_localstatedir}/run/php-fpm php-fpm 2> /dev/null || :
 
 %preun
-if [ $1 = 0 ]; then
-  %{_prefix}/init.d/php-fpm stop > /dev/null 2>&1
-  /usr/sbin/userdel php-fpm
+
+# REMOVE: Stop the service and remove the user.
+if [ $1 -eq 0 ]; then
+    %{_prefix}/init.d/php-fpm stop > /dev/null 2>&1
+    /usr/sbin/userdel php-fpm
 fi
 
 %postun
+
+# UPGRADE: Restart the service.
 if [ $1 -ge 1 ]; then
-   %{_prefix}/init.d/php-fpm restart > /dev/null 2>&1
+    %{_prefix}/init.d/php-fpm restart > /dev/null 2>&1
 fi
 
 %changelog
+* Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r3
+- Fixed bugs in the Composer installation process.
+- Enabled support for PHP OPcode caching.
+
 * Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r2
 - Updating package to PHP7 (stable)
 - Removed composer %{_ls} since it's now part of the install process.
