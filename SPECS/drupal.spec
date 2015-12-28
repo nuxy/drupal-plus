@@ -35,11 +35,6 @@ community of people around the world.
 
 %post
 
-# REMOVE:
-if [ $1 -eq 0 ]; then
-    %{__rm} -rf %{_prefix}/php-bin
-fi
-
 # INSTALL: Create sites/files directory if doesn't exist.
 if [ $1 -eq 1 ] && [ ! -e %{_prefix}/php-bin/sites/default/files ]; then
     %{__mkdir} -p %{_prefix}/php-bin/sites/default/files
@@ -67,6 +62,8 @@ drupal+ php-bin sources have been backed up to:
   %{_prefix}/$BACKUP
 
 EOF
+
+    %{__rm} -rf %{_prefix}/php-bin/sites
 fi
 
 # UPGRADE: Preserve the current sites directory.
@@ -79,6 +76,7 @@ fi
 - Fixed incorrect value of $1 in state check.
 - Added conditional checks to %post and %preun build states.
 - Updated php5 dependency package name (now php7)
+- Manually remove php-bin/sites on package uninstall.
 
 * Fri Dec 25 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Drupal 8 production release is here.
