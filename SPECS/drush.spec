@@ -59,18 +59,11 @@ EOF
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
-* Mon Dec 28 2015 Marc S. Brooks <devel@mbrooks.info> 2
+* Mon Dec 28 2015 Marc S. Brooks <devel@mbrooks.info> r2
 - Added %preun to remove Composer install artifacts.
 - Updated operator in conditional check.
 - Added --quiet to disable Composer STDOUT
 - Updated php5 dependency package name (now php7)
 
-* Sun Dec 26 2015 Marc S. Brooks <devel@mbrooks.info> 1
+* Sun Dec 26 2015 Marc S. Brooks <devel@mbrooks.info> r1
 - Updated package to latest stable release
-
-* Sun Mar 22 2015 Marc S. Brooks <devel@mbrooks.info> alpha9
-- Added missing comma to dependency list
-- Added full path to PHP binary in composer install
-
-* Sat Mar 21 2015  Marc S. Brooks <devel@mbrooks.info> alpha9
-- Initial release based on drupal7-plus sources.
