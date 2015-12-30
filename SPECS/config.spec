@@ -1,6 +1,6 @@
 %define name    drupal+config
 %define version 0.01
-%define release 3
+%define release 4
 
 Summary:   drupal+ configuration files
 Name:      %{name}
@@ -81,6 +81,9 @@ fi
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
+* Wed Dec 30 2015  Marc S. Brooks <devel@mbrooks.info> r4
+- Various updates and additions to nginx.conf
+
 * Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r3
 - Added macro to update permissions on init.d script.
 - Updated build state conditional check.
