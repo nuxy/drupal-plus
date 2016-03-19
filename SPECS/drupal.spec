@@ -1,6 +1,6 @@
 %define name    drupal
-%define version 8.0.1
-%define release 2
+%define version 8.0.4
+%define release 1
 
 Summary:   Open Source CMS
 Name:      %{name}
@@ -72,6 +72,9 @@ if [ $1 -gt 1 ] && [ -d %{_prefix}/php-bin/sites ]; then
 fi
 
 %changelog
+* Fri Jan 18 2016  Marc S. Brooks <devel@mbrooks.info> r1
+- Security update: SA-CORE-2016-001
+
 * Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r2
 - Fixed incorrect value of $1 in state check.
 - Added conditional checks to %post and %preun build states.
