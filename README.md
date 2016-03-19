@@ -10,10 +10,10 @@ The overall goal of this project is to create a standard RPM bundle for installi
 
 The following packages are installed and pre-configured in /usr/local/drupal+
 
-*   [PHP](http://php.net) 7.0.1 / [php-fpm (Fast Process Manager)](http://php-fpm.org) / [pdo_mysql](http://www.php.net/manual/en/ref.pdo-mysql.php) / [Composer](https://getcomposer.org)
-*   [nginx](http://nginx.org) 1.8.0
+*   [PHP](http://php.net) 7.0.4 / [php-fpm (Fast Process Manager)](http://php-fpm.org) / [pdo_mysql](http://www.php.net/manual/en/ref.pdo-mysql.php) / [Composer](https://getcomposer.org)
+*   [nginx](http://nginx.org) 1.8.1
 *   [memcached](http://memcached.org) 1.4.25
-*   [Drupal](http://drupal.org) 8.0.1
+*   [Drupal](http://drupal.org) 8.0.4
 *   [Drush](https://github.com/drush-ops/drush) 8.0.1
 
 ## Supported Systems
