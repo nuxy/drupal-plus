@@ -1,5 +1,5 @@
 %define name    drupal+nginx
-%define version 1.8.0
+%define version 1.8.1
 %define release 1
 
 Summary:       Robust, small and high performance http and reverse proxy
@@ -65,6 +65,9 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Fri Mar 18 2016  Marc S. Brooks <devel@mbrooks.info> r1
+- Security update: CVE-2016-0742, CVE-2016-0746, CVE-2016-0747
+
 * Sat Aug 22 2015  Marc S. Brooks <devel@mbrooks.info> r1
 - Update to latest stable release
 
