@@ -1,6 +1,6 @@
 %define name    drupal+php7
-%define version 7.0.1
-%define release 3
+%define version 7.0.4
+%define release 1
 
 Summary:       PHP: Hypertext Preprocessor
 Name:          %{name}
@@ -25,7 +25,7 @@ developers to write dynamically generated pages quickly.
 %setup -n php-%{version}
 
 %build
-%{configure} --prefix=%{_prefix} --bindir=%{_bindir} --sysconfdir=%{_sysconfdir} --with-openssl --with-pdo-mysql --with-gd --with-jpeg-dir=%{_libdir} --enable-mbstring --enable-fpm --enable-opcache
+%{configure} --prefix=%{_prefix} --bindir=%{_bindir} --sysconfdir=%{_sysconfdir} --with-openssl --with-pdo-mysql --with-gd --with-jpeg-dir=%{_libdir} --with-zlib-dir=%{_libdir} --enable-mbstring --enable-fpm --enable-opcache
 
 %install
 %{__make} INSTALL_ROOT=$RPM_BUILD_ROOT install
@@ -80,6 +80,12 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Fri Jan 18 2016  Marc S. Brooks <devel@mbrooks.info> r1
+- Updated to latest stable release.
+
+* Fri Jan  1 2016  Marc S. Brooks <devel@mbrooks.info> r4
+- Enabled zLib library.
+
 * Mon Dec 28 2015  Marc S. Brooks <devel@mbrooks.info> r3
 - Fixed bugs in the Composer installation process.
 - Enabled support for PHP OPcode caching.
