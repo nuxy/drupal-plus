@@ -1,6 +1,6 @@
 <img src="https://github.com/nuxy/drupal8-plus/raw/master/preview.jpg" alt="drupal-plus" />
 
-(**Updated** **12/26/2015**)
+(**Updated** **3/18/2016**)
 
 ## Project
 
